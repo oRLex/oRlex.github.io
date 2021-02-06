@@ -73,7 +73,7 @@ const scriptsDev = function () {
 };
 const scriptsProd = function () {
   return src(path.src.server + '/**/*.js')
-    .pipe(jsMinify())
+    // .pipe(jsMinify())
     .pipe(concat('scripts.min.js'))
     .pipe(dest(path.dest.js));
 };
