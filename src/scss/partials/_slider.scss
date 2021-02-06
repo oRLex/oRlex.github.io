@@ -1,0 +1,521 @@
+$animate: all 0.2s ease-in-out;
+
+.slider {
+
+  &__inner {
+    margin: 0 auto;
+    max-width: 136rem;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    padding: 6.6rem 0;
+    padding-left: 15rem;
+
+
+
+    &::before {
+      z-index: 0;
+      content: "";
+      background-color: $grey-bg;
+      max-width: 73.7rem;
+      width: 100%;
+      min-height: 62.8rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      opacity: 0.050980392156862744;
+      width: 50%;
+    }
+  }
+
+  &__left {
+    width: 100%;
+    max-width: 30rem;
+  }
+
+  &__right {
+    width: 100%;
+  }
+
+
+  &__content {
+    display: none;
+    position: relative;
+    height: 49.5rem;
+
+    &-active {
+      display: block;
+    }
+  }
+
+  &__picture-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    opacity: 0;
+    animation: fadeInImage 2.5s forwards;
+
+    &>* {
+      z-index: 1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      max-width: 82rem;
+      width: 100%;
+      height: 100%;
+      max-height: 51rem;
+      position: absolute;
+      top: 1.6rem;
+      right: 0;
+      width: calc(100% - 1rem);
+      margin-right: 1rem;
+      z-index: -1;
+      background: rgb(35, 30, 31);
+      background: -moz-linear-gradient(99deg, rgba(35, 30, 31, 1) 0%, rgba(85, 81, 82, 1) 44%);
+      background: -webkit-linear-gradient(99deg, rgba(35, 30, 31, 1) 0%, rgba(85, 81, 82, 1) 44%);
+      background: linear-gradient(99deg, rgba(35, 30, 31, 1) 0%, rgba(85, 81, 82, 1) 44%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#231e1f", endColorstr="#555152", GradientType=1);
+    }
+  }
+
+  &__picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+  }
+
+  &__content-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content-wrap {
+    max-width: 64rem;
+    max-height: 41.7rem;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #000000;
+    padding-top: 6rem;
+    padding-left: 13rem;
+    z-index: 1;
+
+  }
+
+  &__text {
+    max-width: 35.5rem;
+    color: $grey-text;
+    font-family: "Raleway-Medium", sans-serif;
+    letter-spacing: 0.1rem;
+    font-size: 1.5rem;
+    line-height: 2;
+    margin-bottom: 7rem;
+    opacity: 0;
+    transform: translateY(30%);
+    animation: fadeIn 0.6s forwards;
+  }
+
+  &__action {
+    display: inline-block;
+    border: 0.1rem solid $yellow;
+    padding: 1.4rem 2.6rem;
+    color: $grey-text;
+    font-family: "ArialMT", sans-serif;
+    font-size: 1.6rem;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(30%);
+    animation: fadeIn 0.6s forwards;
+
+    &:hover,
+    &:focus {
+      background-color: $yellow;
+    }
+  }
+
+  &__content-wrap {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+
+
+  &__tab-wrap {
+    position: relative;
+    z-index: 2;
+
+  }
+
+  &__tab-item {
+    margin-bottom: 7.2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__tab-item--link {
+    display: flex;
+    flex-direction: column;
+    color: $grey;
+    text-decoration: none;
+    position: relative;
+    max-width: 33rem;
+    height: 4rem;
+    transition: width 0.3s ease-in-out;
+
+    & .city,
+    .state {
+      font-family: $primeFont;
+      transition: 0.3s ease-in-out;
+    }
+
+    & .city {
+      font-size: 3.2rem;
+      margin-right: 6rem;
+    }
+
+    & .state {
+      font-size: 1.4rem;
+    }
+
+    &:hover .city,
+    &-active .city {
+      font-size: 3.4rem;
+    }
+
+    .arrow {
+      position: absolute;
+      bottom: 0;
+      height: 0.2rem;
+      background-color: $silver;
+      width: 100%;
+      z-index: 2;
+      transition: 0.5s ease-in-out;
+
+      &::after,
+      &::before {
+        content: '';
+        position: absolute;
+        width: 2.4rem;
+        height: 0.2rem;
+        right: -1.5rem;
+        background-color: $yellow;
+        opacity: 0;
+        transition: 0.5s all ease-in;
+
+      }
+
+      &::after {
+        top: -0.8rem;
+        transform: rotate(45deg);
+      }
+
+      &::before {
+        top: 0.8rem;
+        transform: rotate(-45deg);
+      }
+    }
+
+    &:hover,
+    &-active {
+      color: $yellow;
+      max-width: 100%;
+    }
+
+
+    &:hover .arrow,
+    &-active .arrow {
+      background-color: $yellow;
+      width: 120%;
+    }
+
+    div {
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 1rem;
+    }
+
+
+    &-active .arrow::before,
+    &-active .arrow::after,
+    &:hover .arrow::before,
+    &:hover .arrow::after {
+      opacity: 1;
+      background-color: $yellow;
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+.icon {
+  border: solid $grey-text;
+  border-width: 0 0.3rem 0.3rem 0;
+  display: inline-block;
+  padding: 0.3rem;
+  transition: all 0.3s;
+
+}
+
+.icon__down {
+  transform: rotate(45deg);
+}
+
+.icon__up {
+  transform: rotate(-135deg);
+}
+
+.tab-mobile {
+  display: none;
+
+  &__item--link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 1.8rem;
+    padding: 1rem;
+    color: $grey-text;
+    text-decoration: none;
+    transition: width 0.3s ease-in-out;
+    background-color: $grey;
+  }
+
+  &__item-content {
+    background-color: $grey-text;
+    flex-direction: column;
+    overflow-y: hidden;
+    max-height: 0;
+  }
+
+  &__item-content--active {
+    display: flex;
+    max-height: 50rem;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+  }
+
+  &__picture {
+    width: 100%;
+    height: auto;
+    min-height: 8rem;
+    max-height: 25rem;
+    margin-bottom: 1rem;
+    position: relative;
+
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__container {
+    padding: 0.3rem;
+
+
+  }
+
+  &__text {
+    font-size: 2rem;
+    color: $grey-bg;
+    text-align: justify;
+    margin-bottom: 1rem;
+  }
+
+  &__action {
+    display: block;
+    width: 100%;
+    border: 0.1rem solid $yellow;
+    padding: 1.4rem 2.6rem;
+    color: $grey-text;
+    background-color: $yellow;
+    font-family: "ArialMT", sans-serif;
+    font-size: 1.6rem;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+
+
+    &:hover,
+    &:focus {
+      background-color: $yellow;
+    }
+
+  }
+}
+
+@media screen and (max-width:670px) {
+  .slider {
+    display: none;
+  }
+
+  .tab-mobile {
+    display: block;
+  }
+
+}
+
+
+@media screen and (max-width:1440px) {
+  .slider {
+    &__right {
+      width: 100%;
+    }
+
+    &__inner {
+      align-items: center;
+      padding-left: 0;
+
+    }
+
+    &__tab-item {
+      position: relative;
+      width: auto;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__tab-item--link:hover .arrow,
+    &__tab-item--link-active .arrow {
+      background-color: $yellow;
+      width: 120%;
+    }
+
+
+    &__tab-wrap {
+      position: relative;
+      transform: translateY(0);
+      top: 0;
+    }
+
+    &__picture-wrap {
+      width: 100%;
+
+
+      &::before {
+        right: 0;
+        width: calc(100% - 1rem);
+
+        margin-right: 1rem;
+      }
+    }
+
+
+
+    &__content-wrap {
+      padding-left: 6rem;
+      padding-top: 6rem;
+    }
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .slider {
+    &__left {
+      max-width: 20rem;
+    }
+
+    &__tab-item--link .city {
+      font-size: 2rem;
+      margin-right: 1.6rem;
+    }
+
+    &__tab-item--link-active .city {
+      font-size: 2.2rem !important;
+    }
+
+    &__text {
+      line-height: 1.8;
+    }
+
+    &__tab-item {
+      margin-bottom: 4rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__content {
+      height: 39.5rem;
+    }
+
+    &__content-wrap {
+      width: 90%;
+      height: 90%;
+    }
+  }
+
+}
+
+@media screen and (max-width:768px) {
+  .slider {
+    &__left {
+      max-width: 15rem;
+    }
+
+    &__tab-item--link .city {
+      font-size: 2rem;
+      margin-right: 1rem;
+    }
+
+    &__tab-item--link div>span:last-child {
+      font-size: 1.2rem;
+    }
+
+    &__tab-item--link-active .city {
+      font-size: 2.2rem;
+    }
+
+    &__text {
+      line-height: 1.8;
+    }
+
+    &__content-wrap {
+      width: 80%;
+      height: 80%;
+      padding-left: 3rem;
+      padding-top: 3rem;
+    }
+  }
+}
